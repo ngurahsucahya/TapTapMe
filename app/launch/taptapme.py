@@ -32,7 +32,6 @@ class Ui_MainWindow(object):
         self.sahabatBerhitung.setSizePolicy(sizePolicy)
         self.sahabatBerhitung.setMaximumSize(QtCore.QSize(500, 250))
         self.sahabatBerhitung.setObjectName("sahabatBerhitung")
-        self.sahabatBerhitung.clicked.connect(self.run_my_program)
         self.horizontalLayout_2.addWidget(self.sahabatBerhitung)
         self.sahabatSehat = QtWidgets.QPushButton(self.centralwidget)
         self.sahabatSehat.setMaximumSize(QtCore.QSize(500, 250))
@@ -57,18 +56,6 @@ class Ui_MainWindow(object):
         self.judul.setText(_translate("MainWindow", "Tap Tap Me"))
         self.sahabatBerhitung.setText(_translate("MainWindow", "Sahabat Berhitung"))
         self.sahabatSehat.setText(_translate("MainWindow", "Sahabat Sehat"))
-
-    def run_my_program(self):
-        # Path to the Python file you want to run
-        file_path = 'memindahkanObjectGAS.py'
-
-        # Load the module
-        spec = importlib.util.spec_from_file_location("module.name", file_path)
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-
-        # Call a function from the loaded module if necessary
-        # module.your_function()
 
 if __name__ == "__main__":
     import sys
