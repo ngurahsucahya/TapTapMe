@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'taptapme_rev.ui'
+# Form implementation generated from reading ui file 'sahabatsehat.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
