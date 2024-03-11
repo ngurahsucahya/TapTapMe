@@ -11,12 +11,25 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.SahabatBerhitung.clicked.connect(self.run_my_program)
+        self.ui.SahabatBerhitung.clicked.connect(self.sahabatBerhitung)
+        self.ui.CekKamera.clicked.connect(self.cekKamera)
 
-    def run_my_program(self):
+    def sahabatBerhitung(self):
         try:
             # Path to the Python file you want to run
             file_path = 'sahabatBerhitung.py'
+
+            # Load the module
+            spec = importlib.util.spec_from_file_location("module.name", file_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+        except Exception as e:
+            print("Error:", e)
+
+    def cekKamera(self):
+        try:
+            # Path to the Python file you want to run
+            file_path = 'deteksiTangan.py'
 
             # Load the module
             spec = importlib.util.spec_from_file_location("module.name", file_path)
