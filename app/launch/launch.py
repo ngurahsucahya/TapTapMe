@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
     def sahabatBerhitung(self):
         try:
             # Path to the Python file you want to run
-            file_path = 'sahabatBerhitung.py'
+            file_path = 'sahabatBerhitung4.py'
 
             # Load the module
             spec = importlib.util.spec_from_file_location("module.name", file_path)
