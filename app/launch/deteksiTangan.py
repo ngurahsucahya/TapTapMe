@@ -1,5 +1,15 @@
 from cvzone.HandTrackingModule import HandDetector
 import cv2
+import pygame
+import sys
+
+# Inisialisasi Pygame dan mixer
+pygame.init()
+pygame.mixer.init()
+
+# Muat dan putar musik secara terus-menerus
+pygame.mixer.music.load("../src/main menu.mp3")  # Ganti dengan path ke file musik Anda
+pygame.mixer.music.play(-1)
 
 #ini tuh code template dari githubnya
 cap = cv2.VideoCapture(0)
@@ -59,4 +69,7 @@ while True:
 # Release the webcam and close all OpenCV windows
 cap.release()
 cv2.destroyAllWindows()
+pygame.mixer.music.stop()
+pygame.quit()
+sys.exit()
 
