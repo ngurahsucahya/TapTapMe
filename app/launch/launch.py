@@ -1,11 +1,11 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QPixmap  # Mengimpor QPixmap dari modul QtGui
+from PyQt5.QtGui import QPixmap
 from PyQt5 import QtGui
 from PyQt5 import QtCore, QtGui, QtWidgets
 import importlib.util
 
-from taptapme2 import Ui_MainWindow as mainMenuUI # Mengimpor kelas Ui_MainWindow dari file UI yang sudah dibuat
+from mainmenu import Ui_MainWindow as mainMenuUI
 from menusahabatsehat import Ui_MainWindow as sahabatSehatMenu
 
 # class SahabatSehatWindow(QtWidgets.QMainWindow):
@@ -24,10 +24,8 @@ class MainWindow(QMainWindow):
 
     def sahabatBerhitung(self):
         try:
-            # Path to the Python file you want to run
-            file_path = 'sahabatBerhitung4.py'
+            file_path = 'sahabatBerhitung5(ambilBola).py'
 
-            # Load the module
             spec = importlib.util.spec_from_file_location("module.name", file_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
@@ -36,10 +34,8 @@ class MainWindow(QMainWindow):
 
     def cekKamera(self):
         try:
-            # Path to the Python file you want to run
             file_path = 'deteksiTangan.py'
 
-            # Load the module
             spec = importlib.util.spec_from_file_location("module.name", file_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)

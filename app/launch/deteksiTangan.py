@@ -1,8 +1,8 @@
 from cvzone.HandTrackingModule import HandDetector
 import cv2
 
-# Initialize the webcam to capture video
-cap = cv2.VideoCapture(3)
+#ini tuh code template dari githubnya
+cap = cv2.VideoCapture(0)
 
 # Initialize the HandDetector class with the given parameters
 detector = HandDetector(staticMode=False, maxHands=2, modelComplexity=1, detectionCon=0.5, minTrackCon=0.5)
