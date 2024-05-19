@@ -2,44 +2,36 @@ import cv2
 import numpy as np
 from cvzone.HandTrackingModule import HandDetector
 
-# buka kamera, biasanya 0 untuk webcam
+#buka kamera, biasanya 3 untuk webcam
 cap = cv2.VideoCapture(0)
 
-# bola1, sebenarnya bentuknya kotak
+#bola1, sebenenrya bentuknya kotak
 rect1_position = [110, 140]
 rect_size = [170, 220]
 
-# bola2
+#bola2
 rect2_position = [80, 170]
 rect2_size = [170, 220]
 
-# bola3
+#bola3
 rect3_position = [130, 200]
 rect3_size = [170, 220]
 
 bola1 = cv2.imread("../src/images/Bola.png", cv2.IMREAD_UNCHANGED)
 bola2 = cv2.imread("../src/images/Bola.png", cv2.IMREAD_UNCHANGED)
 bola3 = cv2.imread("../src/images/Bola.png", cv2.IMREAD_UNCHANGED)
-bg = cv2.imread("../src/images/mainMenu/BG - Main menu.png", cv2.IMREAD_UNCHANGED)
+bg= cv2.imread("../src/images/mainMenu/BG - Main menu.png", cv2.IMREAD_UNCHANGED)
 
-lingkaranBenar = cv2.imread("../src/images/circle.png", cv2.IMREAD_UNCHANGED)
+lingkaranBenar = cv2.imread("../src/images/circle.png",
+                          cv2.IMREAD_UNCHANGED)
 
-pertanyaan = cv2.imread("../src/images/Ambil 1 bola.png", cv2.IMREAD_UNCHANGED)
+pertanyaan = cv2.imread("../src/images/Ambil 1 bola.png",
+                          cv2.IMREAD_UNCHANGED)
 
-selamat = cv2.imread("../src/images/logo.png", cv2.IMREAD_UNCHANGED)  # Gambar selamat
-
-# deteksi tangan
+#deteksi tangan
 detector = HandDetector(staticMode=False, maxHands=1, detectionCon=0.8, minTrackCon=0.5)
 
-# posisi lingkaran
-circle_pos_x = 300
-circle_pos_y = 120
-circle_radius = 135  # Approximate radius for the circle
-
-# status untuk mengetahui apakah bola sudah dalam lingkaran
-ball_in_circle = False
-
-# pokoknya ngambil framenya disini
+#pokoknya ngambil framenya disini
 while True:
     success, img = cap.read()
 
@@ -59,6 +51,7 @@ while True:
     if hands:
         hand_landmarks = hands[0]['lmList']
         if hand_landmarks:
+
             index_finger_x, index_finger_y = hand_landmarks[8][0], hand_landmarks[8][1]
 
             if rect1_position[0] < index_finger_x < rect1_position[0] + rect_size[0] and \
@@ -109,8 +102,8 @@ while True:
     rows, cols, channels = lingkaranBenar_resized.shape
 
     # set posisi lingkaran
-    pos_x = circle_pos_x
-    pos_y = circle_pos_y  # vertical position
+    pos_x = 300
+    pos_y = 120  #vertical position
 
     if channels == 4:
         lingkaranBenar_rgb = lingkaranBenar_resized[:, :, :3]  # Extract RGB channels
@@ -128,7 +121,7 @@ while True:
     pertanyaan_resized = cv2.resize(pertanyaan, (380, 140))
     rows, cols, channels = pertanyaan_resized.shape
 
-    # posisi pertanyaan
+    #posisi pertanyaan
     pos_x = 135
     pos_y = 5
 
@@ -145,43 +138,15 @@ while True:
     else:
         green_background[pos_y:pos_y + rows, pos_x:pos_x + cols] = pertanyaan_resized
 
-    # Check if any ball is inside the circle
-    ball1_center = (rect1_position[0] + rect_size[0] // 2, rect1_position[1] + rect_size[1] // 2)
-    ball2_center = (rect2_position[0] + rect2_size[0] // 2, rect2_position[1] + rect2_size[1] // 2)
-    ball3_center = (rect3_position[0] + rect3_size[0] // 2, rect3_position[1] + rect3_size[1] // 2)
-
-    if (circle_pos_x < ball1_center[0] < circle_pos_x + 270 and circle_pos_y < ball1_center[1] < circle_pos_y + 320) or \
-       (circle_pos_x < ball2_center[0] < circle_pos_x + 270 and circle_pos_y < ball2_center[1] < circle_pos_y + 320) or \
-       (circle_pos_x < ball3_center[0] < circle_pos_x + 270 and circle_pos_y < ball3_center[1] < circle_pos_y + 320):
-        ball_in_circle = True
-
-    # Display the congratulatory message if any ball is inside the circle
-    if ball_in_circle:
-        selamat_resized = cv2.resize(selamat, (400, 200))  # Resize selamat message
-        rows, cols, channels = selamat_resized.shape
-        selamat_pos_x = (img.shape[1] - cols) // 2
-        selamat_pos_y = (img.shape[0] - rows) // 2
-
-        if channels == 4:
-            selamat_rgb = selamat_resized[:, :, :3]  # Extract RGB channels
-            selamat_alpha = selamat_resized[:, :, 3]  # Extract alpha channel
-
-            for c in range(3):
-                green_background[selamat_pos_y:selamat_pos_y + rows, selamat_pos_x:selamat_pos_x + cols, c] = \
-                    selamat_rgb[:, :, c] * (selamat_alpha / 255.0) + \
-                    green_background[selamat_pos_y:selamat_pos_y + rows, selamat_pos_x:selamat_pos_x + cols, c] * \
-                    (1.0 - selamat_alpha / 255.0)
-        else:
-            green_background[selamat_pos_y:selamat_pos_y + rows, selamat_pos_x:selamat_pos_x + cols] = selamat_resized
 
     cv2.namedWindow("Image", cv2.WND_PROP_FULLSCREEN)
     cv2.setWindowProperty("Image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     cv2.imshow("Image", green_background)
 
-    # keluar programnya
+   #keluar programnya
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# selesai
+#selesai
 cap.release()
 cv2.destroyAllWindows()

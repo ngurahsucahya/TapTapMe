@@ -9,11 +9,11 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = mainMenuUI()
         self.ui.setupUi(self)
-        self.ui.Step3.clicked.connect(self.sahabatSehat)
+        self.ui.pushButton_2.clicked.connect(self.sahabatSehat)
 
     def sahabatSehat(self):
         try:
-            file_path = 'sahabatBerhitung5(ambilBola).py'
+            file_path = 'sahabatSehat(memasangkan).py'
 
             spec = importlib.util.spec_from_file_location("module.name", file_path)
             module = importlib.util.module_from_spec(spec)
