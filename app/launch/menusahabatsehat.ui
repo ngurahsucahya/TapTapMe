@@ -19,8 +19,8 @@
      <rect>
       <x>40</x>
       <y>10</y>
-      <width>1071</width>
-      <height>641</height>
+      <width>1101</width>
+      <height>701</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -39,11 +39,17 @@
         </size>
        </property>
        <property name="text">
-        <string>Step 4</string>
+        <string/>
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>C:/Users/Ngurah Sucahya/Downloads/ttd ulum.jpg</normaloff>C:/Users/Ngurah Sucahya/Downloads/ttd ulum.jpg</iconset>
+         <normaloff>../src/images/mainMenu/Button - Step 4 sehat.png</normaloff>../src/images/mainMenu/Button - Step 4 sehat.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>500</width>
+         <height>300</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -62,7 +68,17 @@
         </size>
        </property>
        <property name="text">
-        <string>Step 1</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../src/images/mainMenu/Button - Step 1 sehat.png</normaloff>../src/images/mainMenu/Button - Step 1 sehat.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>500</width>
+         <height>300</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -75,7 +91,17 @@
         </size>
        </property>
        <property name="text">
-        <string>Step 2</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../src/images/mainMenu/Button - Step 2 sehat.png</normaloff>../src/images/mainMenu/Button - Step 2 sehat.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>500</width>
+         <height>300</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -94,7 +120,17 @@
         </size>
        </property>
        <property name="text">
-        <string>Step 3</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../src/images/mainMenu/Button - Step 3 sehat.png</normaloff>../src/images/mainMenu/Button - Step 3 sehat.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>500</width>
+         <height>300</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -106,13 +142,13 @@
       <x>1130</x>
       <y>20</y>
       <width>100</width>
-      <height>70</height>
+      <height>100</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
       <width>100</width>
-      <height>70</height>
+      <height>100</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -121,10 +157,43 @@
       <height>70</height>
      </size>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:90px
+</string>
+    </property>
     <property name="text">
-     <string>Bantuan</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../src/images/BG + Button-20240404T053502Z-001/BG + Button/Button - Bantuan.png</normaloff>../src/images/BG + Button-20240404T053502Z-001/BG + Button/Button - Bantuan.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1281</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../src/images/mainMenu/BG - Step.png</pixmap>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>Home_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

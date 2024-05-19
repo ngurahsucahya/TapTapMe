@@ -6,7 +6,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import importlib.util
 
 from mainmenu import Ui_MainWindow as mainMenuUI
-from menusahabatsehat import Ui_MainWindow as sahabatSehatMenu
+from klikSahabatSehat import MainWindow as sahabatSehatMenu
+from klikSahabatBerhitung import MainWindow as sahabatBerhitungMenu
 
 # class SahabatSehatWindow(QtWidgets.QMainWindow):
 #     def __init__(self):
@@ -18,19 +19,19 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = mainMenuUI()
         self.ui.setupUi(self)
-        self.ui.SahabatBerhitung.clicked.connect(self.sahabatBerhitung)
-        self.ui.CekKamera.clicked.connect(self.cekKamera)
+        self.ui.SahabatBerhitung.clicked.connect(self.SahabatBerhitung)
         self.ui.SahabatSehat.clicked.connect(self.SahabatSehat)
+        self.ui.CekKamera.clicked.connect(self.cekKamera)
 
-    def sahabatBerhitung(self):
-        try:
-            file_path = 'sahabatBerhitung5(ambilBola).py'
-
-            spec = importlib.util.spec_from_file_location("module.name", file_path)
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-        except Exception as e:
-            print("Error:", e)
+    # def sahabatBerhitung(self):
+    #     try:
+    #         file_path = 'sahabatBerhitung5(ambilBola).py'
+    #
+    #         spec = importlib.util.spec_from_file_location("module.name", file_path)
+    #         module = importlib.util.module_from_spec(spec)
+    #         spec.loader.exec_module(module)
+    #     except Exception as e:
+    #         print("Error:", e)
 
     def cekKamera(self):
         try:
@@ -42,11 +43,19 @@ class MainWindow(QMainWindow):
         except Exception as e:
             print("Error:", e)
 
+    # def SahabatSehat(self):
+    #     self.sahabat_sehat_window = QtWidgets.QMainWindow()
+    #     self.ui_sahabat_sehat = sahabatSehatMenu()
+    #     self.ui_sahabat_sehat.setupUi(self.sahabat_sehat_window)
+    #     self.sahabat_sehat_window.show()
+
     def SahabatSehat(self):
-        self.sahabat_sehat_window = QtWidgets.QMainWindow()
-        self.ui_sahabat_sehat = sahabatSehatMenu()
-        self.ui_sahabat_sehat.setupUi(self.sahabat_sehat_window)
+        self.sahabat_sehat_window = sahabatSehatMenu()
         self.sahabat_sehat_window.show()
+
+    def SahabatBerhitung(self):
+        self.sahabat_berhitung_window = sahabatBerhitungMenu()
+        self.sahabat_berhitung_window.show()
 
     # ini cuman buat pengetahuan aja
     # def tampilWindowSahabatSehat(self):
